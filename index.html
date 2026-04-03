@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gabriela Puga | DanzArte & Movimiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08070f;--card:#0f0d1a;
+  --pink:#ff2d78;--violet:#9b5de5;--cyan:#00f0ff;
+  --white:#fff;--muted:#7a7090;
+  --border:rgba(155,93,229,0.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(8,7,15,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;transition:color 0.2s}
+.nav-links a:hover{color:var(--cyan)}
+
+/* HERO */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 2rem 6rem;overflow:hidden}
+.aurora{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 20% 60%,rgba(155,93,229,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 30%,rgba(255,45,120,0.15) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 50% 80%,rgba(0,240,255,0.1) 0%,transparent 50%);animation:aurora-shift 10s ease-in-out infinite alternate}
+@keyframes aurora-shift{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.1) rotate(3deg);opacity:1}}
+.ring{position:absolute;border-radius:50%;border:1px solid;animation:ring-expand 4s ease-out infinite;opacity:0}
+.ring:nth-child(1){width:300px;height:300px;left:calc(50% - 150px);top:calc(50% - 150px);border-color:rgba(255,45,120,0.3);animation-delay:0s}
+.ring:nth-child(2){width:500px;height:500px;left:calc(50% - 250px);top:calc(50% - 250px);border-color:rgba(155,93,229,0.2);animation-delay:1.3s}
+.ring:nth-child(3){width:700px;height:700px;left:calc(50% - 350px);top:calc(50% - 350px);border-color:rgba(0,240,255,0.15);animation-delay:2.6s}
+@keyframes ring-expand{0%{transform:scale(.5);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+.hero-inner{position:relative;z-index:2;max-width:900px;width:100%}
+.hero-chip{display:inline-flex;align-items:center;gap:.5rem;background:rgba(155,93,229,0.15);border:1px solid rgba(155,93,229,0.4);padding:.4rem 1.2rem;border-radius:50px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:2rem;animation:fade-up .8s .2s both}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{font-family:'Playfair Display',serif;font-weight:900;line-height:.92;animation:fade-up .8s .4s both}
+.hero-name .first{display:block;font-size:clamp(3.2rem,13vw,8.5rem);color:rgba(255,255,255,.95);letter-spacing:-.02em}
+.hero-name .last{display:block;font-size:clamp(4rem,17vw,10.5rem);font-style:italic;letter-spacing:-.03em;background:linear-gradient(135deg,var(--pink) 0%,var(--violet) 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:fade-up .8s .4s both,gradient-shift 4s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(255,45,120,.5))}
+@keyframes gradient-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-rule{width:100px;height:2px;background:linear-gradient(to right,transparent,var(--pink),var(--violet),var(--cyan),transparent);margin:2rem auto;animation:fade-up .8s .6s both}
+.hero-roles{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-bottom:2.5rem;animation:fade-up .8s .8s both}
+.role-badge{padding:.45rem 1.1rem;border-radius:50px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:1px solid}
+.rb-1{border-color:rgba(255,45,120,.5);color:var(--pink);background:rgba(255,45,120,.08)}
+.rb-2{border-color:rgba(155,93,229,.5);color:var(--violet);background:rgba(155,93,229,.08)}
+.rb-3{border-color:rgba(0,240,255,.5);color:var(--cyan);background:rgba(0,240,255,.08)}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fade-up .8s 1s both}
+.btn-electric{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.2rem;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;background:linear-gradient(135deg,var(--pink),var(--violet));color:#fff;box-shadow:0 0 30px rgba(255,45,120,.4),0 0 60px rgba(155,93,229,.2);transition:transform .2s,box-shadow .2s;cursor:pointer}
+.btn-electric:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 50px rgba(255,45,120,.6),0 0 80px rgba(155,93,229,.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.2rem;border-radius:6px;border:1px solid rgba(0,240,255,.4);color:var(--cyan);font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:all .2s;background:rgba(0,240,255,.05)}
+.btn-ghost:hover{background:rgba(0,240,255,.12);border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 0 30px rgba(0,240,255,.2)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fade-up .8s 1.4s both}
+.scroll-hint span{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--violet),transparent);animation:scroll-flow 2s ease-in-out infinite}
+@keyframes scroll-flow{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+@keyframes fade-up{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:7rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.s-label{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);margin-bottom:.7rem;font-weight:700}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.05}
+.s-title em{font-style:italic;background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ABOUT */
+#about{background:linear-gradient(180deg,var(--bg) 0%,#0d0b1a 100%)}
+.about-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:5rem;align-items:center;margin-top:4rem}
+.photo-wrap{position:relative}
+.photo-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#130f1f,#1a1030);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);gap:1rem;overflow:hidden;position:relative}
+.photo-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,45,120,.05),rgba(155,93,229,.05))}
+.photo-placeholder svg{opacity:.25;position:relative;z-index:1}
+.photo-placeholder p{font-size:.72rem;color:var(--muted);position:relative;z-index:1;letter-spacing:.1em}
+.photo-neon-frame{position:absolute;top:-12px;left:-12px;right:12px;bottom:-12px;border-radius:4px;border:1px solid rgba(255,45,120,.3);pointer-events:none}
+.photo-glow{position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;background:var(--pink);border-radius:50%;opacity:.2;filter:blur(40px)}
+.photo-glow2{position:absolute;top:-20px;left:-20px;width:80px;height:80px;background:var(--violet);border-radius:50%;opacity:.25;filter:blur(30px)}
+.about-text p{color:rgba(255,255,255,.62);line-height:1.9;font-size:.92rem;font-weight:300;margin-bottom:1.3rem}
+.about-text p strong{color:var(--white);font-weight:700}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.stat{padding:1.5rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;text-align:center;transition:border-color .3s,background .3s}
+.stat:hover{border-color:rgba(255,45,120,.5);background:rgba(255,45,120,.05)}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-l{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+
+/* SERVICES */
+#servicios{background:#0d0b1a}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:4rem}
+.s-card{background:var(--card);padding:2.5rem;cursor:default;position:relative;overflow:hidden;transition:background .3s}
+.s-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--pink),var(--violet),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.s-card:hover{background:#171327}
+.s-card:hover::before{transform:scaleX(1)}
+.s-card-glow{position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;opacity:0;transition:opacity .4s;filter:blur(30px)}
+.s-card:hover .s-card-glow{opacity:.15}
+.s-card:nth-child(odd) .s-card-glow{background:var(--pink)}
+.s-card:nth-child(even) .s-card-glow{background:var(--violet)}
+.s-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem;background:rgba(255,255,255,.04);border:1px solid var(--border)}
+.s-name{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:.8rem}
+.s-desc{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.75}
+.s-tag{display:inline-block;margin-top:1.2rem;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;padding:.25rem .75rem;border-radius:50px;border:1px solid rgba(255,45,120,.35);color:var(--pink);background:rgba(255,45,120,.06)}
+
+/* CALENDARIO */
+#calendario{background:linear-gradient(180deg,#0d0b1a 0%,var(--bg) 100%)}
+.cal-top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.month-nav{display:flex;align-items:center;gap:1rem}
+.mnav-btn{background:rgba(155,93,229,.1);border:1px solid rgba(155,93,229,.3);color:var(--white);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mnav-btn:hover{background:rgba(155,93,229,.25);border-color:var(--violet);box-shadow:0 0 15px rgba(155,93,229,.3)}
+.month-lbl{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;min-width:200px;text-align:center}
+.cal-wrap{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-hdr{padding:.8rem;text-align:center;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);background:rgba(155,93,229,.06)}
+.cal-cell{min-height:85px;padding:.6rem;border-right:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;transition:background .2s}
+.cal-cell:hover{background:rgba(155,93,229,.08)}
+.cal-cell.empty{background:rgba(0,0,0,.2);cursor:default}
+.cal-cell.today .dnum{background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900}
+.dnum{font-size:.8rem;color:rgba(255,255,255,.35);font-weight:600;margin-bottom:.3rem}
+.cev{display:block;font-size:.58rem;padding:.18rem .35rem;border-radius:3px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
+.cev-danza{background:rgba(255,45,120,.2);color:#ff7aaa}
+.cev-bbmb{background:rgba(155,93,229,.2);color:#c49df5}
+.cev-taller{background:rgba(0,240,255,.15);color:#7ff5ff}
+.upcoming{margin-top:3rem}
+.up-label{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;font-weight:700}
+.ev-row{display:flex;align-items:center;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.ev-datebox{flex-shrink:0;width:56px;height:56px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);background:rgba(155,93,229,.08)}
+.ev-day{font-size:1.4rem;font-weight:900;line-height:1;color:var(--white)}
+.ev-mon{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ev-info{flex:1}
+.ev-name{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+.ev-meta{font-size:.75rem;color:var(--muted)}
+.ev-badge{padding:.2rem .65rem;border-radius:50px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+/* CONTACTO */
+#contacto{background:var(--bg);text-align:center}
+.contact-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(155,93,229,.12) 0%,transparent 70%);pointer-events:none}
+.social-row{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-top:3.5rem}
+.soc-card{display:flex;flex-direction:column;align-items:center;gap:.7rem;width:140px;padding:2rem 1rem;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.02);text-decoration:none;color:var(--white);transition:all .25s;position:relative;overflow:hidden}
+.soc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,45,120,.08),rgba(155,93,229,.08));opacity:0;transition:opacity .25s}
+.soc-card:hover{transform:translateY(-6px);border-color:rgba(255,45,120,.5);box-shadow:0 20px 40px rgba(255,45,120,.15)}
+.soc-card:hover::before{opacity:1}
+.soc-card svg{width:30px;height:30px;position:relative;z-index:1}
+.soc-name{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;position:relative;z-index:1}
+.soc-handle{font-size:.65rem;color:var(--muted);position:relative;z-index:1}
+.wa-block{max-width:520px;margin:3rem auto 0;padding:2rem;border:1px solid rgba(37,211,102,.25);border-radius:16px;background:rgba(37,211,102,.04);display:flex;flex-direction:column;align-items:center;gap:1rem}
+.wa-block strong{font-size:1rem;font-weight:700}
+.wa-block p{font-size:.82rem;color:var(--muted)}
+.btn-wa{display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#000;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2rem;border-radius:8px;text-decoration:none;box-shadow:0 0 30px rgba(37,211,102,.3);transition:all .2s}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 0 50px rgba(37,211,102,.5)}
+
+footer{position:relative;z-index:1;text-align:center;padding:2.5rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+footer span{background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.2rem}
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .cal-cell{min-height:55px;padding:.35rem}
+  .cev{display:none}
+  section{padding:5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav>
+  <div class="nav-logo">G. Puga</div>
+  <div class="nav-links">
+    <a href="#about">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#calendario">Agenda</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="aurora"></div>
+  <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+  <div class="hero-inner">
+    <div class="hero-chip"><span class="chip-dot"></span> Guadalajara, México · 25 años de trayectoria</div>
+    <h1 class="hero-name">
+      <span class="first">Gabriela</span>
+      <span class="last">Puga</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <div class="hero-roles">
+      <span class="role-badge rb-1">💃 Bailarina Profesional</span>
+      <span class="role-badge rb-2">🎭 Directora DanzArte Bahía</span>
+      <span class="role-badge rb-3">🌿 Entrenadora BBMB</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#calendario" class="btn-electric">📅 Ver Clases y Eventos</a>
+      <a href="#servicios" class="btn-ghost">✨ Mis Servicios</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Descubre</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="photo-wrap reveal">
+        <div class="photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <p>Foto de Perfil</p>
+        </div>
+        <div class="photo-neon-frame"></div>
+        <div class="photo-glow"></div>
+        <div class="photo-glow2"></div>
+      </div>
+      <div class="reveal">
+        <p class="s-label">Sobre Mí</p>
+        <h2 class="s-title">El movimiento es<br><em>mi lenguaje</em></h2>
+        <div style="height:2px;width:60px;background:linear-gradient(to right,var(--pink),var(--violet));margin:1.5rem 0;border-radius:2px"></div>
+        <div class="about-text">
+          <p>Soy <strong>Gabriela Puga</strong>, bailarina profesional con más de <strong>25 años de trayectoria</strong>. Directora de <strong>DanzArte Bahía</strong> y Entrenadora Certificada <strong>Beamish Bodymind Balancing (BBMB)</strong>.</p>
+          <p>Fusiono la danza con la rehabilitación física y emocional para transformar cuerpos y mentes. Licenciada en Publicidad y Relaciones Públicas, también soy creadora de <strong>Bahia Chic — Moda en Movimiento</strong>.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Años de experiencia</div></div>
+          <div class="stat"><div class="stat-n">3</div><div class="stat-l">Proyectos activos</div></div>
+          <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Pasión por el arte</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="s-label">Lo que ofrezco</p>
+      <h2 class="s-title">Mis <em>Servicios</em></h2>
+    </div>
+    <div class="services-grid reveal">
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">💃</div><div class="s-name">Clases de Danza</div><p class="s-desc">Grupales e individuales para todos los niveles. Técnica, expresión y disciplina corporal.</p><span class="s-tag">DanzArte Bahía</span></div>
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">🌿</div><div class="s-name">Bodymind Balancing</div><p class="s-desc">Rehabilitación física y emocional a través del movimiento consciente. Método BBMB certificado.</p><span class="s-tag">Beamish BBMB</span></div>
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">✨</div><div class="s-name">Bahia Chic</div><p class="s-desc">Moda en movimiento: estilo, imagen y expresión personal donde la moda y el arte se unen.</p><span class="s-tag">Moda & Arte</span></div>
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">🎭</div><div class="s-name">Talleres & Eventos</div><p class="s-desc">Workshops intensivos y presentaciones artísticas para grupos, empresas y comunidades.</p><span class="s-tag">Eventos Especiales</span></div>
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">🎓</div><div class="s-name">Formación Profesional</div><p class="s-desc">Entrenamiento para bailarines con metodología rigurosa y profunda sensibilidad artística.</p><span class="s-tag">Pro Training</span></div>
+      <div class="s-card"><div class="s-card-glow"></div><div class="s-icon">💜</div><div class="s-name">Consulta Personalizada</div><p class="s-desc">Sesiones individuales: técnica, bienestar, rehabilitación o expresión artística. 100% para ti.</p><span class="s-tag">1 a 1</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="calendario">
+  <div class="container">
+    <div class="reveal">
+      <p class="s-label">Agenda</p>
+      <h2 class="s-title">Clases &amp; <em>Eventos</em></h2>
+    </div>
+    <div class="cal-top reveal" style="margin-top:3rem">
+      <div></div>
+      <div class="month-nav">
+        <button class="mnav-btn" id="prevMonth">&#8249;</button>
+        <div class="month-lbl" id="monthLabel">Abril 2026</div>
+        <button class="mnav-btn" id="nextMonth">&#8250;</button>
+      </div>
+    </div>
+    <div class="cal-wrap reveal">
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <div class="upcoming reveal">
+      <p class="up-label">✦ Próximas clases y eventos</p>
+      <div id="eventsList"></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="#contacto" class="btn-electric">📲 Reservar mi lugar</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contact-glow"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="reveal">
+      <p class="s-label">Conecta Conmigo</p>
+      <h2 class="s-title">Estoy a un mensaje<br><em>de distancia</em></h2>
+      <p style="margin-top:1.2rem;color:var(--muted);font-size:.88rem;max-width:480px;margin-left:auto;margin-right:auto">Sígueme en redes, escríbeme por WhatsApp o agenda tu clase. ¡El movimiento te espera!</p>
+    </div>
+    <div class="social-row reveal">
+      <a href="https://www.instagram.com/gabbypuga1/" target="_blank" class="soc-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#E1306C" stroke="none"/></svg>
+        <span class="soc-name">Instagram</span><span class="soc-handle">@gabbypuga1</span>
+      </a>
+      <a href="https://www.facebook.com/share/1CNwnX7Fm6/" target="_blank" class="soc-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <span class="soc-name">Facebook</span><span class="soc-handle">Gabriela Puga</span>
+      </a>
+      <a href="https://wa.me/523310000000?text=Hola%20Gabriela!%20Me%20interesa%20informaci%C3%B3n%20sobre%20tus%20clases." target="_blank" class="soc-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <span class="soc-name">WhatsApp</span><span class="soc-handle">Escríbeme</span>
+      </a>
+      <a href="https://linktr.ee/alianza33" target="_blank" class="soc-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#39E09B" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="soc-name">Linktree</span><span class="soc-handle">alianza33</span>
+      </a>
+    </div>
+    <div class="wa-block reveal">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="#25D366"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <strong>¿Lista para empezar?</strong>
+      <p>Escríbeme por WhatsApp y agenda tu primera clase</p>
+      <a href="https://wa.me/523310000000?text=Hola%20Gabriela!%20Me%20interesa%20agendar%20una%20clase." target="_blank" class="btn-wa">💬 Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Gabriela Puga</span> · DanzArte Bahía · Beamish Bodymind Balancing · Bahia Chic</p>
+  <p style="margin-top:.4rem;font-size:.62rem">Guadalajara, México</p>
+</footer>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+const COLORS=['#ff2d78','#9b5de5','#00f0ff','#ff80b0','#c49df5','#ffffff'];
+function rp(){return{x:Math.random()*W,y:H+20,r:Math.random()*2.2+.5,vx:(Math.random()-.5)*.5,vy:-(Math.random()*.7+.3),alpha:Math.random()*.5+.2,color:COLORS[Math.floor(Math.random()*COLORS.length)],life:Math.random()*250+150,age:0,tw:Math.random()*Math.PI*2}}
+for(let i=0;i<140;i++){let p=rp();p.y=Math.random()*H;particles.push(p)}
+function animP(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;p.age++;p.tw+=.05;
+    const ta=p.alpha*(0.6+.4*Math.sin(p.tw));
+    const lr=p.age/p.life;
+    const fade=lr<.1?lr/.1:lr>.8?1-(lr-.8)/.2:1;
+    ctx.save();ctx.globalAlpha=ta*fade;
+    ctx.fillStyle=p.color;ctx.shadowBlur=10;ctx.shadowColor=p.color;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    if(p.r>1.4){ctx.strokeStyle=p.color;ctx.lineWidth=.4;ctx.beginPath();ctx.moveTo(p.x-p.r*3.5,p.y);ctx.lineTo(p.x+p.r*3.5,p.y);ctx.moveTo(p.x,p.y-p.r*3.5);ctx.lineTo(p.x,p.y+p.r*3.5);ctx.stroke()}
+    ctx.restore();
+    if(p.age>=p.life||p.y<-20)particles[i]=rp();
+  });
+  requestAnimationFrame(animP);
+}
+animP();
+
+// REVEAL
+const revEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*90)})},{threshold:.08});
+revEls.forEach(el=>io.observe(el));
+
+// CALENDAR
+const EVENTS=[
+  {date:new Date(2026,3,7), name:'Clase de Danza',         type:'cev-danza', time:'10:00 AM',place:'DanzArte Bahía'},
+  {date:new Date(2026,3,9), name:'Sesión BBMB',            type:'cev-bbmb',  time:'6:00 PM', place:'Online'},
+  {date:new Date(2026,3,12),name:'Clase de Danza',         type:'cev-danza', time:'10:00 AM',place:'DanzArte Bahía'},
+  {date:new Date(2026,3,14),name:'Taller Movimiento Libre',type:'cev-taller',time:'4:00 PM', place:'DanzArte Bahía'},
+  {date:new Date(2026,3,16),name:'Sesión BBMB',            type:'cev-bbmb',  time:'6:00 PM', place:'Online'},
+  {date:new Date(2026,3,19),name:'Clase de Danza',         type:'cev-danza', time:'10:00 AM',place:'DanzArte Bahía'},
+  {date:new Date(2026,3,23),name:'Taller Bahia Chic',      type:'cev-taller',time:'3:00 PM', place:'Estudio'},
+  {date:new Date(2026,3,26),name:'Clase de Danza',         type:'cev-danza', time:'10:00 AM',place:'DanzArte Bahía'},
+  {date:new Date(2026,3,30),name:'Presentación Artística', type:'cev-taller',time:'7:00 PM', place:'Por confirmar'},
+];
+const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const DAYS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+const MSHORT=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+let cy=2026,cm=3;
+function buildCal(y,m){
+  document.getElementById('monthLabel').textContent=`${MONTHS[m]} ${y}`;
+  const grid=document.getElementById('calGrid');grid.innerHTML='';
+  DAYS.forEach(d=>{const h=document.createElement('div');h.className='cal-hdr';h.textContent=d;grid.appendChild(h)});
+  const fd=new Date(y,m,1).getDay(),dim=new Date(y,m+1,0).getDate(),today=new Date();
+  for(let i=0;i<fd;i++){const el=document.createElement('div');el.className='cal-cell empty';grid.appendChild(el)}
+  for(let d=1;d<=dim;d++){
+    const el=document.createElement('div');el.className='cal-cell';
+    if(d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear())el.classList.add('today');
+    const dn=document.createElement('div');dn.className='dnum';dn.textContent=d;el.appendChild(dn);
+    EVENTS.filter(ev=>ev.date.getFullYear()===y&&ev.date.getMonth()===m&&ev.date.getDate()===d).forEach(ev=>{
+      const s=document.createElement('span');s.className=`cev ${ev.type}`;s.textContent=ev.name;el.appendChild(s)});
+    grid.appendChild(el);
+  }
+  const list=document.getElementById('eventsList');list.innerHTML='';
+  const now=new Date();
+  const up=EVENTS.filter(ev=>ev.date>=now&&ev.date.getMonth()===m).slice(0,5);
+  const tl={'cev-danza':'Danza','cev-bbmb':'BBMB','cev-taller':'Taller'};
+  const tb={'cev-danza':'rgba(255,45,120,.15)','cev-bbmb':'rgba(155,93,229,.15)','cev-taller':'rgba(0,240,255,.1)'};
+  const tf={'cev-danza':'#ff7aaa','cev-bbmb':'#c49df5','cev-taller':'#7ff5ff'};
+  if(!up.length){list.innerHTML='<p style="color:var(--muted);font-size:.85rem;padding:1rem 0">No hay eventos programados este mes.</p>';return}
+  up.forEach(ev=>{list.innerHTML+=`<div class="ev-row"><div class="ev-datebox"><span class="ev-day">${ev.date.getDate()}</span><span class="ev-mon">${MSHORT[ev.date.getMonth()]}</span></div><div class="ev-info"><div class="ev-name">${ev.name}</div><div class="ev-meta">🕐 ${ev.time} &nbsp;·&nbsp; 📍 ${ev.place}</div></div><span class="ev-badge" style="background:${tb[ev.type]};color:${tf[ev.type]}">${tl[ev.type]}</span></div>`})
+}
+document.getElementById('prevMonth').addEventListener('click',()=>{cm--;if(cm<0){cm=11;cy--}buildCal(cy,cm)});
+document.getElementById('nextMonth').addEventListener('click',()=>{cm++;if(cm>11){cm=0;cy++}buildCal(cy,cm)});
+buildCal(cy,cm);
+</script>
+</body>
+</html>
